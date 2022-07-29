@@ -1,0 +1,66 @@
+.vui-condition-tree {
+  margin: 100px;
+  .vui-condition-group {
+    display: flex;
+    .conditional {
+      margin-right: 20px;
+      padding: 20px 20px 0 16px;
+      // 表示一个组的竖线，图 ① 标记位置
+      border-right: 1px solid #d9d9d9;
+    }
+
+    .conditions {
+      > div {
+        position: relative;
+        // 实现每项中间位置显示的短横线，图 ②、③、④ 标记位置的横线
+        &::before {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 0px;
+          top: 0;
+          width: 21px;
+          height: 50%;
+          border-bottom: 1px solid #d9d9d9;
+          transform: translate(-100%, 0%);
+        }
+        // 第一项需要把竖线的前面一截盖住；图 ③ 标记位置上面“空白”区域
+        &:first-child {
+          &::before {
+            background-color: #fff;
+          }
+        }
+        // 最后一项需要把竖线的后面一截盖住；图 ④ 标记位置下面“空白”区域
+        &:last-child {
+          &::before {
+            transform: translate(-100%, 100%);
+            // border-top: 1px ;
+            background-color: #fff;
+            border-top: 1px solid #d9d9d9;
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .vui-condition-item,
+    .vui-condition-group {
+      margin-bottom: 20px;
+    }
+    .vui-condition-item {
+      .delete-term {
+        margin-left: 10px;
+      }
+    }
+    .conditional {
+      position: relative;
+      padding-left: 0;
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // top: 50%;
+      // transform: translateY(50%);
+    }
+  }
+}
